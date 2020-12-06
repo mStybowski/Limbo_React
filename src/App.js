@@ -1,25 +1,42 @@
-import logo from './logo.svg';
+import {Pane, Text, Button} from 'evergreen-ui'
+import {InfoSignIcon, EndorsedIcon} from 'evergreen-ui'
 import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <Pane 
+      width="100%"
+      height={50}
+      border="default"
+      display= "flex"
+      flexDirection="row"
+      alignItems="center"
+      justifyContent="space-between"
+      paddingX="150px"
+    >
+      <Text 
+        fontSize={26}
+        fontFamily="Limbo"
+        color="#222222"
+      >
+        Limbo
+      </Text>
+
+      <Pane
+        display= "flex"
+        flexDirection="row"
+        alignItems="center"
+        paddingX="15px"
+      >
+        <InfoSignIcon color="info" marginRight="12px"/>
+        <Text color="info">
+          Not connected to MQTT Broker
+        </Text>
+      </Pane>
+ 
+      <Button appearance="primary" intent="success">Połącz z serwerem!</Button>
+    </Pane>
+  )
 }
 
 export default App;

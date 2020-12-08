@@ -1,5 +1,5 @@
 import {Text} from "evergreen-ui";
-import '../App.css';
+import '../../App.css';
 
 function Logo() {
     return (

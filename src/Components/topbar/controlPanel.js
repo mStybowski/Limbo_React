@@ -5,11 +5,12 @@ function ControlPanel() {
     return(
         <Pane
             display= "flex"
-            flexDirection="row"
-            alignItems="center"
+            width={"280px"}
+            justifyContent={"space-between"}
         >
+
             <BrokerSettingsPopover/>
-            <Button marginRight={16} appearance="primary" intent="success">Connect to Broker</Button>
+            <Button appearance="primary" intent="success">Connect to Broker</Button>
         </Pane>
     )
 }

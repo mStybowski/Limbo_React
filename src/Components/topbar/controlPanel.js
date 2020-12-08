@@ -5,7 +5,7 @@ function ControlPanel() {
     return(
         <Pane
             display= "flex"
-            width={"280px"}
+            minWidth={"220px"}
             justifyContent={"space-between"}
         >
 

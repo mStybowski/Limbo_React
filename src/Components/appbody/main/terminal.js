@@ -1,22 +1,13 @@
-import {Textarea, Pane, Label} from "evergreen-ui";
-
+import {Text, Pane, Label} from "evergreen-ui";
 
 function Terminal(){
     return(
-        <Pane>
-            <Label
-                htmlFor="textarea-2"
-                marginBottom={4}
-                display="block"
-            >
-                Label
-            </Label>
-            <Textarea
-                id="textarea-2"
-                placeholder="Textarea placeholder..."
-                width={"400px"}
-                height={"500px"}
-            />
+        <Pane
+            minWidth={"400px"}
+            height={"100%"}
+            border={"default"}
+        >
+            <Text>Terminal</Text>
         </Pane>
     )
 }

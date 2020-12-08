@@ -3,3 +3,8 @@
   src: local('Limbo'), url(./fonts/limboFont.woff) format('woff');
 }
 
+.wrapper{
+  display: flex;
+  flex-direction: column;
+}
+

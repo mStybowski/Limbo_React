@@ -5,7 +5,7 @@ function BrokerSettingsPopover() {
     <Popover
         content={({close}) => (
             <Pane
-                width={320}
+                width={260}
                 height={320}
                 paddingX={40}
                 display="flex"
@@ -18,7 +18,7 @@ function BrokerSettingsPopover() {
         )}
         shouldCloseOnExternalClick={true}
     >
-        <Button>Trigger Popover</Button>
+        <Button>Settings</Button>
     </Popover>
     )
 }

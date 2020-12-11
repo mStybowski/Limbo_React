@@ -2,7 +2,7 @@ import {Button, Pane, Popover} from "evergreen-ui";
 import Logo from "./logo"
 import ControlPanel from "./controlPanel";
 
-function Topbar() {
+function Topbar(props) {
     return(
         <Pane
             width="100%"
@@ -21,7 +21,7 @@ function Topbar() {
             >
                 <Logo />
 
-                <ControlPanel/>
+                <ControlPanel connectToBroker={props.cn} setSettings={props.setSettings} settings={props.serverState}/>
             </Pane>
 
         </Pane>

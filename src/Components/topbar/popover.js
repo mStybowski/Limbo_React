@@ -3,26 +3,31 @@ import {CogIcon} from "evergreen-ui"
 import { useEffect, useState} from 'react'
 import "./topbar.css"
 
+const buttonStates = {
+    NotConnected:{
+        intent:"success",
+        text:"Connect to broker"
+    },
+    Connected:{
+        intent:"danger",
+        text:"Disconnect from broker"
+    }
+}
+
 function ClientSettingsPopover(props) {
 
-    let notConnectedText = "Not connected to MQTT Broker";
-    let connectedText = "You are connected to MQTT Broker";
-    let displayedIPAddress = "";
 
-    const panelState = {
-        brokerIPAddress: "",
-        mqttClientID: "GUI",
-        protocol: "mqtt",
-        testMessage: "Test message from GUI",
-        testMessageTopic: "TESTS"
-    }
 
     const [brokerIP, setInputBrokerIP] = useState('localhost');
     const [clientId, setInputClientId] = useState('GUI_Client');
     const [port, setInputPort] = useState("8083");
     const [inputSSL, setInputSSL] = useState({checked:false});
     const [inputSth, setInputSth] = useState({checked:false});
+    const [buttonAppearance, setButtonAppearance] = useState({intent: "success", text:"Connect to broker"})
 
+    useEffect(() =>{
+        setButtonAppearance(buttonStates[props.clientState.state])
+    })
 
     return(
         <Popover
@@ -104,18 +109,26 @@ function ClientSettingsPopover(props) {
                     <Button
                         appearance="primary"
                         onClick={props.connectToBroker}
-                        intent="success"
+                        intent={buttonAppearance.intent}
                         textAlign={"center"}
-                        onClick={close}
+
                         iconAfter={LinkIcon}
                         marginY={10}
                     >
-                        Connect
+                        {buttonAppearance.text}
+                    </Button>
+
+                    <Button
+
+                        onClick={close}
+
+                    >
+                        Close
                     </Button>
 
                 </Pane>
             )}
-            shouldCloseOnExternalClick={false}
+            shouldCloseOnExternalClick={true}
         >
             <Button
                 iconAfter={CogIcon}

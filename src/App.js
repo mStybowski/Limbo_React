@@ -12,7 +12,8 @@ const initialServerState = {
     connectedToBroker: false,
     brokerIP: "mqtt://192.168.2.179:8083/mqtt",
     clientID: "ReactApp",
-    MQTTclient: null
+    MQTTclient: null,
+    state: "NotConnected"
 }
 
 function App() {
@@ -26,12 +27,12 @@ function App() {
             client.subscribe('presence', function (err) {
                 if (!err) {
                     client.publish('presence', 'Hello mqtt')
-
+                    client.publish('commands', 'getState')
                 }
 
             })
             setServerSettings((prevState) => {
-                return { ...prevState, connectedToBroker: true }
+                return { ...prevState, state:"Connected"}
             })
             client.on("message", (topic, message) => {
                 console.log(message.toString());

@@ -21,7 +21,8 @@ function Topbar(props) {
             >
                 <Logo />
 
-                <ControlPanel connectToBroker={props.cn} setSettings={props.setSettings} settings={props.serverState}/>
+                <ControlPanel connectionStateNumber={props.serverState.num}
+                              connectToBroker={props.cn} setSettings={props.setSettings} settings={props.serverState}/>
             </Pane>
 
         </Pane>

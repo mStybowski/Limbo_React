@@ -1,17 +1,36 @@
 import {Pane, Button, Badge} from "evergreen-ui";
 import ClientSettingsPopover from "./popover";
-import {useState} from "react";
+import {useState, useEffect} from "react";
+
+
+let badgeStates = {
+    NotConnected: {
+        color: "neutral",
+        text: "Not Connected"
+    },
+    Connected: {
+        color: "green",
+        text: "Connected"
+    }
+    ,
+    Error: {
+        color: "red",
+        text: "Error"
+    }
+}
 
 function ControlPanel(props) {
 
-    let intent = "warning";
-    const [connectionStateBadge, setConnectionStateBadge] = useState({color: "neutral", text:"Not connected"});
-    (props.connectToBroker)?intent="success":intent="warning";
 
+    const [connectionStateBadge, setConnectionStateBadge] = useState(badgeStates.NotConnected);
 
-    return(
+    useEffect(()=>{
+        setConnectionStateBadge(badgeStates[props.settings.state]);
+    })
+
+    return (
         <Pane
-            display= "flex"
+            display="flex"
             justifyContent={"space-between"}
             alignItems={"center"}
         >
@@ -21,7 +40,8 @@ function ControlPanel(props) {
             >
                 {connectionStateBadge.text}
             </Badge>
-            <ClientSettingsPopover connectToBroker={props.connectToBroker} clientState={props.settings}/>
+
+            <ClientSettingsPopover connectToBroker={props.connectToBroker} clientState={props.settings} />
 
 
         </Pane>

@@ -14,6 +14,38 @@ const buttonStates = {
     }
 }
 
+function connectedButton(props) {
+    return (
+        <Button
+            appearance="primary"
+            onClick={props.connect}
+            intent="warning"
+            textAlign={"center"}
+
+            iconAfter={LinkIcon}
+            marginY={10}
+        >
+            Disconnect
+        </Button>
+    );
+}
+
+function notConnectedButton(props) {
+    return (
+        <Button
+            appearance="primary"
+            onClick={props.connect}
+            intent="success"
+            textAlign={"center"}
+
+            iconAfter={LinkIcon}
+            marginY={10}
+        >
+            Connect
+        </Button>
+    );
+}
+
 function ClientSettingsPopover(props) {
 
 
@@ -108,15 +140,17 @@ function ClientSettingsPopover(props) {
 
                     <Button
                         appearance="primary"
-                        onClick={props.connectToBroker}
-                        intent={buttonAppearance.intent}
+                        onClick={props.connect}
+                        intent="success"
                         textAlign={"center"}
 
                         iconAfter={LinkIcon}
                         marginY={10}
                     >
-                        {buttonAppearance.text}
+                        Connect
                     </Button>
+
+
 
                     <Button
 

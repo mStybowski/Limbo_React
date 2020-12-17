@@ -42,7 +42,7 @@ function ControlPanel(props) {
             </Badge>
 
             <ClientSettingsPopover disconnectFromBroker={props.disconnectFromBroker} connectToBroker={props.connectToBroker} clientState={props.settings} />
-            <Button onClick={props.sendTestMessage}/>
+            <Button onClick={() => {props.sendTestMessage("guiCommands", "TEST")}}/>
 
 
         </Pane>

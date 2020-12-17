@@ -20,7 +20,7 @@ function createMQTTConnection(ip, clientID, SSL) {
         innerClient.subscribe('presence', function (err) {
             if (!err) {
                 innerClient.publish('presence', 'GUI_Client')
-                innerClient.publish('commands', 'getState')
+                innerClient.publish('guiRequests/state', '')
             }
         })
 
@@ -59,9 +59,9 @@ class App extends Component{
             console.log("You aren't even connected!");
         }
     }
-    sendTestMessage(){
+    sendTestMessage(topic, message){
         if(this.state.connected)
-            this.state.client.publish("test", "Test message from GUI Client");
+            this.state.client.publish(topic, message);
 
         else
             console.log("Not connected")

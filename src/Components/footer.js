@@ -10,10 +10,9 @@ function Footer(){
             flexDirection={"column"}
             justifyContent={"center"}
             alignItems={"center"}
+            justifySelf={"flex-end"}
             textAlign={"center"}
-            position={"absolute"}
-            bottom={"0"}
-            left={"0"}
+
             border="default"
         >
             <Paragraph size={300}>

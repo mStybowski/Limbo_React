@@ -1,4 +1,5 @@
 import {Pane, Text} from "evergreen-ui"
+import ComponentHeading from "./componentHeading";
 
 function Stats(){
     return(
@@ -7,9 +8,8 @@ function Stats(){
             height={"80px"}
             border={"default"}
         >
-            <Text>
-                Stats
-            </Text>
+            <ComponentHeading name={"Stats"}/>
+
         </Pane>
     )
 }

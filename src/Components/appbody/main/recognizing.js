@@ -1,16 +1,16 @@
 import {Pane, Text} from "evergreen-ui"
+import ComponentHeading from "./componentHeading";
 
 function Recognizing(){
     return(
         <Pane
             height={"410px"}
-            flexBasis={"50%"}
+            width={"390px"}
             border={"default"}
             marginLeft={"5px"}
         >
-            <Text>
-                Recognizing
-            </Text>
+            <ComponentHeading name={"Recognizing"}/>
+
         </Pane>
     )
 }

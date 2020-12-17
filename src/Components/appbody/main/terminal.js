@@ -1,4 +1,5 @@
 import {Text, Pane, Label} from "evergreen-ui";
+import ComponentHeading from "./componentHeading";
 
 function Terminal(){
     return(
@@ -7,7 +8,8 @@ function Terminal(){
             height={"100%"}
             border={"default"}
         >
-            <Text>Terminal</Text>
+            <ComponentHeading name={"Terminal"}/>
+
         </Pane>
     )
 }

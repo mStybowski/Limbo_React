@@ -1,4 +1,5 @@
 import {Pane, Text} from "evergreen-ui"
+import ComponentHeading from "./appbody/main/componentHeading";
 
 function Learning(){
     return(
@@ -8,9 +9,8 @@ function Learning(){
             border={"default"}
             marginY={"40px"}
         >
-            <Text>
-                Learning
-            </Text>
+            <ComponentHeading name={"Learning process"}/>
+
         </Pane>
     )
 }

@@ -19,9 +19,9 @@ let badgeStates = {
     }
 }
 
+
+
 function ControlPanel(props) {
-
-
     const [connectionStateBadge, setConnectionStateBadge] = useState(badgeStates.NotConnected);
 
     useEffect(()=>{
@@ -41,7 +41,8 @@ function ControlPanel(props) {
                 {connectionStateBadge.text}
             </Badge>
 
-            <ClientSettingsPopover connectToBroker={props.connectToBroker} clientState={props.settings} />
+            <ClientSettingsPopover disconnectFromBroker={props.disconnectFromBroker} connectToBroker={props.connectToBroker} clientState={props.settings} />
+            <Button onClick={props.sendTestMessage}/>
 
 
         </Pane>

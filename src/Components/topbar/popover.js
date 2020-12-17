@@ -6,7 +6,7 @@ import "./topbar.css"
 const buttonStates = {
     NotConnected:{
         intent:"success",
-        text:"Connect to broker"
+        text:"Connect to broker",
     },
     Connected:{
         intent:"danger",
@@ -14,37 +14,16 @@ const buttonStates = {
     }
 }
 
-function connectedButton(props) {
-    return (
-        <Button
-            appearance="primary"
-            onClick={props.connect}
-            intent="warning"
-            textAlign={"center"}
+function returnURL(ip, port, path, ssl = false){
+    if(ssl){
+        return "wss://".concat(ip).concat(":").concat(port).concat("/").concat(path);
+    }
+    else{
+        return "ws://".concat(ip).concat(":").concat(port).concat("/").concat(path);
 
-            iconAfter={LinkIcon}
-            marginY={10}
-        >
-            Disconnect
-        </Button>
-    );
+    }
 }
 
-function notConnectedButton(props) {
-    return (
-        <Button
-            appearance="primary"
-            onClick={props.connect}
-            intent="success"
-            textAlign={"center"}
-
-            iconAfter={LinkIcon}
-            marginY={10}
-        >
-            Connect
-        </Button>
-    );
-}
 
 function ClientSettingsPopover(props) {
 
@@ -57,9 +36,39 @@ function ClientSettingsPopover(props) {
     const [inputSth, setInputSth] = useState({checked:false});
     const [buttonAppearance, setButtonAppearance] = useState({intent: "success", text:"Connect to broker"})
 
+
     useEffect(() =>{
         setButtonAppearance(buttonStates[props.clientState.state])
     })
+
+    function renderButton(){
+        if(props.clientState.connected)
+            return (
+                <Button
+                    appearance="primary"
+                    onClick={props.disconnectFromBroker}
+                    intent="warning"
+                    textAlign={"center"}
+
+                    iconAfter={LinkIcon}
+                    marginY={10}
+                >
+                    Disconnect
+                </Button>)
+        return (
+        <Button
+            appearance="primary"
+            onClick={() => props.connectToBroker(returnURL(brokerIP, port, "mqtt"), clientId, inputSSL.checked)}
+            intent="success"
+            textAlign={"center"}
+
+            iconAfter={LinkIcon}
+            marginY={10}
+        >
+            Connect
+        </Button>
+        )
+    }
 
     return(
         <Popover
@@ -137,21 +146,11 @@ function ClientSettingsPopover(props) {
                         />
                     </Pane>
 
-
-                    <Button
-                        appearance="primary"
-                        onClick={props.connect}
-                        intent="success"
-                        textAlign={"center"}
-
-                        iconAfter={LinkIcon}
-                        marginY={10}
+                    <Pane
+                        display={"flex"}
                     >
-                        Connect
-                    </Button>
-
-
-
+                        {renderButton()}
+                    </Pane>
                     <Button
 
                         onClick={close}

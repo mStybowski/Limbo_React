@@ -22,7 +22,12 @@ function Topbar(props) {
                 <Logo />
 
                 <ControlPanel connectionStateNumber={props.serverState.num}
-                              connectToBroker={props.cn} setSettings={props.setSettings} settings={props.serverState}/>
+                              connectToBroker={props.cn}
+                              disconnectFromBroker={props.dc}
+                              setSettings={props.setSettings}
+                              settings={props.serverState}
+                              sendTestMessage={props.sendTestMessage}
+                />
             </Pane>
 
         </Pane>
